@@ -24,7 +24,7 @@ limitations under the License.
 
   <name>Page Test</name>
   <description>A page test.</description>
-  <!--url>https://mal-lang.org/</url-->
+  <url>https://mal-lang.org/page-test/</url>
   <inceptionYear>2020</inceptionYear>
   <organization>
     <name>mal-lang</name>
