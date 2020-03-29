@@ -1,0 +1,24 @@
+language: java
+os: linux
+dist: bionic
+jdk:
+  - openjdk11
+  - openjdk14
+
+notifications:
+  email: false
+
+git:
+  depth: false
+  quiet: true
+
+after_success: mvn clean install site -B -V
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: target/site
+  on:
+    branch: master
+    jdk: openjdk11
