@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project>
   <skin>
     <groupId>org.apache.maven.skins</groupId>
@@ -15,31 +16,29 @@
   </custom>
   <bannerLeft>
     <name>MAL</name>
-    <src>${project.organization.url}/helmet.svg</src>
-    <href>${project.organization.url}</href>
+    <src>https://mal-lang.org/helmet.svg</src>
+    <href>https://mal-lang.org/</href>
   </bannerLeft>
-  <publishDate position="right" />
-  <version position="right" />
+  <publishDate position="right"/>
+  <version position="right"/>
   <body>
-    <menu ref="reports" />
+    <menu ref="reports"/>
     <breadcrumbs>
-      <item name="MAL" href="${project.organization.url}" />
-      <item name="Page Test" href="${project.url}" />
+      <item name="MAL" href="https://mal-lang.org/"/>
+      <item name="Page Test" href="https://mal-lang.org/page-test/"/>
     </breadcrumbs>
-    <footer>
-      <![CDATA[
+    <footer><![CDATA[
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
         <p>
-          Copyright &copy; 2020 <a href="${project.organization.url}">${project.organization.name}</a>. All rights reserved.
+          Copyright &copy; 2020 <a href="https://www.foreseeti.com/">Foreseeti AB</a>, Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
         </p>
-        <img alt="MAL logo" style="width: 3em; height: 3em;" src="https://mal-lang.org/helmet.svg" />
+        <img alt="MAL logo" style="width: 3em; height: 3em;" src="https://mal-lang.org/helmet.svg"/>
         <p>
           This work, "MAL logo", is a derivative of "<a href="https://thenounproject.com/term/diving-helmet/2448842/">Diving Helmet</a>" by <a href="https://thenounproject.com/madexmadeicons/">Made x Made Icons</a>, used under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-          <br />
+          <br/>
           "MAL logo" is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by <a href="https://www.foreseeti.com/">Foreseeti AB</a>.
         </p>
       </div>
-      ]]>
-    </footer>
+    ]]></footer>
   </body>
 </project>

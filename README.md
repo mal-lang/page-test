@@ -1,3 +1,7 @@
 # Page Test
 
 A page test.
+
+## Acknowledgements
+
+Copyright © 2020 [Foreseeti AB](https://www.foreseeti.com/), Licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).

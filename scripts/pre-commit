@@ -9,12 +9,17 @@ changed_files="$(git diff --cached --name-only --diff-filter=ACMR)"
 set +e
 changed_java="$(echo "$changed_files" | grep "\.java$")"
 changed_pom="$(echo "$changed_files" | grep "^pom\.xml$")"
+changed_xml="$(echo "$changed_files" | grep "\.xml$" | grep -v "^pom\.xml$")"
 set -e
 
 if [ -n "$changed_java" ]; then
-  echo "$changed_java" | tr "\n" "\0" | xargs -0 "$PWD/.fmt/format-java.sh"
+  echo "$changed_java" | tr "\n" "\0" | xargs -0 "scripts/format-java.sh"
 fi
 
 if [ -n "$changed_pom" ]; then
-  "$PWD/.fmt/format-pom.sh"
+  "scripts/format-pom.sh"
+fi
+
+if [ -n "$changed_xml" ]; then
+  echo "$changed_xml" | tr "\n" "\0" | xargs -0 "scripts/format-xml.sh"
 fi

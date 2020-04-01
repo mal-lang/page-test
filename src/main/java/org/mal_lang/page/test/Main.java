@@ -22,6 +22,8 @@ package org.mal_lang.page.test;
  * @since 1.0.0
  */
 public class Main {
+  private Main() {}
+
   /**
    * Prints "Page Test" to stdout.
    *
