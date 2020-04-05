@@ -64,6 +64,8 @@ limitations under the License.
   </issueManagement>
 
   <properties>
+    <mainClass>org.mal_lang.page.test.Main</mainClass>
+    <packageName>org.mal_lang.page.test</packageName>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
@@ -147,8 +149,8 @@ limitations under the License.
                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                 <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
                 <addExtensions>true</addExtensions>
-                <mainClass>org.mal_lang.page.test.Main</mainClass>
-                <packageName>org.mal_lang.page.test</packageName>
+                <mainClass>${mainClass}</mainClass>
+                <packageName>${packageName}</packageName>
               </manifest>
             </archive>
           </configuration>
@@ -259,6 +261,16 @@ limitations under the License.
         <!--
           Super POM plugins
         -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
@@ -446,6 +458,9 @@ limitations under the License.
             <reports>
               <report>checkstyle</report>
             </reports>
+            <configuration>
+              <enableRSS>false</enableRSS>
+            </configuration>
           </reportSet>
         </reportSets>
       </plugin>
@@ -462,4 +477,50 @@ limitations under the License.
       </plugin>
     </plugins>
   </reporting>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
