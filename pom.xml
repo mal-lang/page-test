@@ -19,7 +19,7 @@ limitations under the License.
 
   <groupId>org.mal-lang</groupId>
   <artifactId>page-test</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>Page Test</name>
@@ -55,7 +55,7 @@ limitations under the License.
   <scm>
     <connection>scm:git:git://github.com/mal-lang/page-test.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/mal-lang/page-test.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>release/1.0.0</tag>
     <url>https://github.com/mal-lang/page-test</url>
   </scm>
   <issueManagement>
