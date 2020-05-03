@@ -29,7 +29,7 @@ ffaf61c (tag: release/1.0.0) [maven-release-plugin] prepare release release/1.0.
 Push the release commit to github and wait for the CI build to finish:
 
 ```shell
-git push origin release/$release_version:master
+git push origin HEAD^:master
 ```
 
 Push the release tag and development commit to github:
