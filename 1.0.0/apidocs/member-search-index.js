@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"org.mal_lang.page.test","c":"Main","l":"main(String...)","url":"main(java.lang.String...)"}]
