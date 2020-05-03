@@ -45,6 +45,6 @@ if [ "$TRAVIS_BRANCH" != "$expected_branch" ]; then
   exit 0
 fi
 
-sudo apt -y update
-sudo apt -y install xqilla
+sudo apt-get -y update
+sudo apt-get -y install xqilla
 scripts/build-site.sh
