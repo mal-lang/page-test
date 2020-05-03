@@ -1,6 +1,8 @@
 language: java
-os: linux
 dist: bionic
+os:
+  - linux
+  - osx
 jdk:
   - openjdk11
   - openjdk14
@@ -12,13 +14,14 @@ git:
   depth: false
   quiet: true
 
-after_success: mvn clean install site -B -V
+install: skip
+script: scripts/build-travis.sh
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: target/site
+  keep_history: true
+  local_dir: site
   on:
-    branch: master
-    jdk: openjdk11
+    condition: -d site

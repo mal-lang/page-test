@@ -74,7 +74,7 @@ limitations under the License.
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.6.1</version>
+      <version>5.7.0-M1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -142,13 +142,10 @@ limitations under the License.
           <version>3.2.0</version>
           <configuration>
             <archive>
-              <index>true</index>
               <manifest>
-                <addClasspath>true</addClasspath>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                 <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
-                <addExtensions>true</addExtensions>
                 <mainClass>${mainClass}</mainClass>
                 <packageName>${packageName}</packageName>
               </manifest>
@@ -264,7 +261,7 @@ limitations under the License.
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.2.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -516,6 +513,11 @@ limitations under the License.
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <configuration>
+                  <executable>gpg2</executable>
+                  <keyname>${env.GPG_KEYNAME}</keyname>
+                  <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+                </configuration>
               </execution>
             </executions>
           </plugin>

@@ -4,14 +4,12 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-. "scripts/try.sh"
-
 if [ $# -ne 0 ]; then
   xml_files="$(printf ",%s" "$@" | sed "s/^,//")"
 else
   set +e
   xml_files="$(
-    scripts/print-git-files.sh |
+    git ls-tree -r --name-only --full-name --full-tree HEAD |
     grep "\.xml$" |
     grep -v "^pom\.xml$" |
     tr "\n" "\0" |
@@ -22,7 +20,6 @@ else
 fi
 
 if [ -n "$xml_files" ]; then
-  try \
-    "Formatting xml files" \
-    "mvn -B -q -Dincludes=\"\$xml_files\" xml-format:xml-format"
+  echo "Formatting xml"
+  mvn -B -q -Dincludes="$xml_files" xml-format:xml-format
 fi

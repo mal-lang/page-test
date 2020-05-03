@@ -3,19 +3,18 @@
 set -e
 
 cd "$(dirname "$0")/.."
+base_dir="$PWD"
+scripts_dir="$base_dir/scripts"
 
-. "scripts/try.sh"
-
-fmt_jar_version="1.7"
-fmt_jar_release="google-java-format-$fmt_jar_version"
+fmt_jar_project="google-java-format"
+fmt_jar_version="1.8"
+fmt_jar_release="$fmt_jar_project-$fmt_jar_version"
 fmt_jar_file="$fmt_jar_release-all-deps.jar"
-fmt_jar="scripts/$fmt_jar_file"
-fmt_jar_url="https://github.com/google/google-java-format/releases/download/$fmt_jar_release/$fmt_jar_file"
+fmt_jar_url="https://github.com/google/$fmt_jar_project/releases/download/$fmt_jar_release/$fmt_jar_file"
 
-if [ ! -f "$fmt_jar" ]; then
-  try \
-    "Downloading $fmt_jar_file" \
-    "curl -sSLf \"\$fmt_jar_url\" -o \"\$fmt_jar\""
+if [ ! -f "$scripts_dir/$fmt_jar_file" ]; then
+  echo "Downloading $fmt_jar_file"
+  curl -sSLf "$fmt_jar_url" -o "$scripts_dir/$fmt_jar_file"
 fi
 
 if [ $# -ne 0 ]; then
@@ -23,14 +22,13 @@ if [ $# -ne 0 ]; then
 else
   set +e
   java_files="$(
-    scripts/print-git-files.sh |
+    git ls-tree -r --name-only --full-name --full-tree HEAD |
     grep "\.java$"
   )"
   set -e
 fi
 
 if [ -n "$java_files" ]; then
-  try \
-    "Formatting java files" \
-    "echo \"\$java_files\" | tr \"\\n\" \"\\0\" | xargs -0 java -jar \"\$fmt_jar\" -i"
+  echo "Formatting java"
+  echo "$java_files" | tr "\n" "\0" | xargs -0 java -jar "$scripts_dir/$fmt_jar_file" -i
 fi
